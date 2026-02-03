@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Valentine ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top, #ff5f9e, #8b0033);
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+    }
+
+    .box {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 35px 25px;
+      border-radius: 25px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      max-width: 360px;
+      animation: pop 1s ease;
+    }
+
+    @keyframes pop {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      font-weight: 400;
+    }
+
+    p {
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    .from {
+      margin-top: 25px;
+      font-style: italic;
+      opacity: 0.9;
+    }
+
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 22px;
+      animation: float 6s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) scale(1);
+      }
+      100% {
+        transform: translateY(-120vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+    <h1 id="to">My Valentine ❤️</h1>
+    <h2>Happy Valentine’s Day 💌</h2>
+
+    <p>
+      In a world full of moments,  
+      you’re my favorite feeling.  
+      This little page is just to remind you  
+      how special you are to me 💖
+    </p>
+
+    <div class="from" id="from">— Yours</div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const to = params.get("to") || "You";
+    const from = params.get("from") || "Someone";
+
+    document.getElementById("to").innerText = `Dear ${to} ❤️`;
+    document.getElementById("from").innerText = `— With love, ${from}`;
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerText = "💖";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (4 + Math.random() * 3) + "s";
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 7000);
+    }
+
+    setInterval(createHeart, 450);
+  </script>
+
+</body>
+</html>
